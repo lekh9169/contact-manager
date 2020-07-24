@@ -1,0 +1,49 @@
+doctype html
+html
+    head
+        link(rel="stylesheet",href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous")
+        title="Hello World"
+        link(href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet")
+        style.
+            body{
+                font-family: 'Spartan', sans-serif;
+            };
+    body
+        .header.bg-dark.p-6.mb-6.text-center
+            p.text-primary.display-2="DATABASE" 
+         
+        table.table.table-bordered
+                thead
+                    tr
+                        th="TITLE"
+                        th="FIRSTNAME"
+                        th="LASTNAME"
+                        th="EMAIL"
+                        th="PHONE"
+                        th="DELETION"
+                tbody
+                    tr
+                        
+                            form.form-inline(action='/',method="POST")
+                        
+                                input.form-control#firstname(type="text" name = "firstname" placeholder="firstname" required)
+                        
+                                input.form-control#lastname(type="text" name="lastname" placeholder="lastname" required)
+                        
+                                input.form-control#email(type="text" name = "email" placeholder="email" required)
+                        
+                                input.form-control#phone(type="text" name = "phone" placeholder="phone" required)
+                        
+                                button.btn.btn-success="add"
+                    each contact in contacts
+                        tr
+                            td=contact.id
+                            td=contact.firstname
+                            td=contact.lastname
+                            td=contact.email
+                            td=contact.phone
+                            td
+                                form(id=`delete${contact.id}` method = "POST" action = `/${contact.id}/delete`)
+                                    button.btn.btn-danger(type="submit")="Delete"
+                        
+
